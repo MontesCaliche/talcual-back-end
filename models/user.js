@@ -17,6 +17,13 @@ const userSchema = new Schema({
     password:{type:String,required:[true,'La contraseña es obligatoria']},
     role:{type:String,required:true,default:'user',enum:roles },
     name:{type:String,required:[true,'El nombre es necesario']},
+    country:{type:String, default:""},
+    phone:{type:String, default:""},
+    birth:{type:Date, default:""},
+    facebook:{type:String, default:""},
+    instagram:{type:String, default:""},
+    twitter:{type:String, default:""},
+    linkedin:{type:String, default:""},
     date:{type:Date, default: Date.now},
     active:{type:Boolean, default:true},
     url_img:{type:String, default:""}   

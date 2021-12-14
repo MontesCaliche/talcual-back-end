@@ -28,7 +28,7 @@ const upload_image = multer({
 
     cb("El archivo debe ser una imágen válida");
   },
-}).single("img_profile");
+}).single("url_img");
 
 //para filtrar campos de put
 //const _ = require('underscore');
@@ -84,7 +84,22 @@ router.get('/dates/:email',checkAuth,async(req,res)=>{
     return res.status(500).send(error);
   }
 })
+//subir imagen
+router.put("/upload-image", upload_image, async (req, res) => {
+  const user_id = req.body.user_id;
+  const extension = path.extname(req.file.originalname);
+  const url = req.body.urlServer;
 
+  try {
+    const result = await User.updateOne(
+      { _id: user_id },
+      {url_img: `${url}/uploads/profile_images/${user_id}profile-image${extension}` }
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+});
 
 
 
@@ -133,30 +148,6 @@ router.put("/dates/:user_id", async (req, res) => {
     res.status(500).send(error);
   }
 });
-
-
-
-
-
-//subir imagen
-router.put("/upload-image", upload_image, async (req, res) => {
-  const user_id = req.body.user_id;
-  const extension = path.extname(req.file.originalname);
-  const url = req.body.urlServer;
-
-  try {
-    const result = await User.updateOne(
-      { _id: user_id },
-      { img: `${url}/uploads/profile_images/${user_id}profile-image${extension}` }
-    );
-    res.json(result);
-  } catch (error) {
-    return res.status(500).send(error);
-  }
-});
-
-
-
 //PUT
 router.put("/user/:id", [checkAuth, checkAdmin], async (req, res) => {
   try {

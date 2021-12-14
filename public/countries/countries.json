@@ -1,0 +1,134 @@
+﻿{
+"countries": [
+	{
+		"id" : 5,
+		"name" : "Argentina",
+		"codephone": "+54"
+	},
+	{
+		"id" : 123,
+		"name" : "Bolivia",
+		"codephone": "+591"
+	},
+	{
+		"id" : 12,
+		"name" : "Brasil",
+		"codephone": "+55"
+	},
+	{
+		"id" : 81,
+		"name" : "Chile",
+		"codephone": "+56"
+	},
+	{
+		"id" : 82,
+		"name" : "Colombia",
+		"codephone": "+57"
+	},
+	{
+		"id" : 36,
+		"name" : "Costa Rica",
+		"codephone": "+506"
+	},
+	{
+		"id" : 22,
+		"name" : "Dinamarca",
+		"codephone": "+45"
+	},
+	{
+		"id" : 103,
+		"name" : "Ecuador",
+		"codephone": "+593"
+	},
+	{
+		"id" : 51,
+		"name" : "El Salvador",
+		"codephone": "+503"
+	},
+	{
+		"id" : 28,
+		"name" : "España",
+		"codephone": "+34"
+	},
+	{
+		"id" : 55,
+		"name" : "Estados Unidos",
+		"codephone": "+1"
+	},
+	{
+		"id" : 64,
+		"name" : "Francia",
+		"codephone": "+33"
+	},
+	{
+		"id" : 185,
+		"name" : "Guatemala",
+		"codephone": "+502"
+	},
+	{
+		"id" : 137,
+		"name" : "Honduras",
+		"codephone": "+504"
+	},
+	{
+		"id" : 29,
+		"name" : "Italia",
+		"codephone": "+39"
+	},
+
+	{
+		"id" : 70,
+		"name" : "Japón",
+		"codephone": "+81"
+	},
+	{
+		"id" : 42,
+		"name" : "México",
+		"codephone": "+52"
+	},
+	{
+		"id" : 124,
+		"name" : "Panamá",
+		"codephone": "+507"
+	},
+	{
+		"id" : 110,
+		"name" : "Paraguay",
+		"codephone": "+595"
+	},
+	{
+		"id" : 89,
+		"name" : "Perú",
+		"codephone": "+51"
+	},
+	{
+		"id" : 48,
+		"name" : "Portugal",
+		"codephone": "+351"
+	},
+	{
+		"id" : 138,
+		"name" : "República Dominicana",
+		"codephone": "+1"
+	},
+	{
+		"id" : 66,
+		"name" : "Suiza",
+		"codephone": "+41"
+	},
+	{
+		"id" : 59,
+		"name" : "Turquía",
+		"codephone": "+90"
+	},
+	{
+		"id" : 111,
+		"name" : "Uruguay",
+		"codephone": "+598"
+	},
+	{
+		"id" : 95,
+		"name" : "Venezuela",
+		"codephone": "+58"
+	}
+]}
