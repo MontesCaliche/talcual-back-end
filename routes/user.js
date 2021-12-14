@@ -54,6 +54,7 @@ router.post("/new-user", async (req, res) => {
     return res.status(500).send(error);
   }
 });
+
 //saber si existe un usuario
 router.get("/findUser/:email", async (req, res) => {
   const email = req.params.email;
@@ -71,6 +72,20 @@ router.get("/findUser/:email", async (req, res) => {
     return res.status(500).send(error);
   }
 });
+
+//Obtener datos de un usuario
+router.get('/dates/:email',checkAuth,async(req,res)=>{
+  try {
+    const email = req.params.email;
+    const dateUser = await User.findOne({email:email})
+
+    return res.json(dateUser)
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+})
+
+
 
 
 
@@ -140,16 +155,7 @@ router.put("/upload-image", upload_image, async (req, res) => {
   }
 });
 
-router.get('/dates/:email',checkAuth,async(req,res)=>{
-    try {
-      const email = req.params.email;
-      const dateUser = await User.findOne({email:email})
 
-      return res.json(dateUser)
-    } catch (error) {
-      return res.status(500).send(error);
-    }
-})
 
 //PUT
 router.put("/user/:id", [checkAuth, checkAdmin], async (req, res) => {

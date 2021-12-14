@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const checkAuth = (req, res, next) => {
     const token = req.get('token');
 
-    jwt.verify(token, 'pneumaOollooSecretPassword', (err, decoded) => {
+    jwt.verify(token, 'talcualUamSecretPassword', (err, decoded) => {
         if (err) {
             return res.status(401).json({ message: 'El usuario no es válido' });
         }
