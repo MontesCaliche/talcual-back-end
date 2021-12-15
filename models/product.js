@@ -2,13 +2,16 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-   code:{type:Number},
-   foreignIdQuestion:{type:String},
    foreignIdUser:{type:String},
-   category:{type:String},
-   order:{type:String}
+   productName:{type:String},
+   productPrice:{type:Number},
+   productCity:{type:String},
+   productCategory:{type:String},
+   productCategory:{type:String},
+   productDescription:{type:String},
+   imageurl:{type:String}
 },{timestamps:true});
 
-const Product = mongoose.model('Answer',productSchema);
+const Product = mongoose.model('Product',productSchema);
 
 export default Product;
