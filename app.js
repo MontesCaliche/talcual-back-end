@@ -20,6 +20,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(require('./routes/user'));
 app.use('/login',require('./routes/login'));
 app.use('/products',require('./routes/products'));
+app.use('/reports',require('./routes/reports'));
 //Midleware para vue.js router modo history
 app.use(history());
 //esta configuracion de ruta estatica debe ir despues de history

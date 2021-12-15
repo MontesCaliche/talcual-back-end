@@ -1,16 +1,17 @@
 import express from 'express';
 const router = express.Router();
-import Product from '../models/product'
+import Report from '../models/report'
 import multer from "multer";
 import path from "path";
 const {checkAuth} = require('../middlewares/autentication');
 
+
 const storage = multer.diskStorage({
-    destination: path.join(__dirname, "../public/uploads/products-images"),
+    destination: path.join(__dirname, "../public/uploads/reports_images"),
     filename: (req, file, cb) => {
       const user_id = req.body.user_id;
-      const name_product = req.body.productName;
-      cb(null, user_id + name_product +"product" + path.extname(file.originalname));
+      const reportTitle = req.body.title;
+      cb(null,user_id + reportTitle +"report" + path.extname(file.originalname));
     },
   });
 
@@ -30,37 +31,34 @@ const storage = multer.diskStorage({
     },
   }).single("file-img");
 
-//Obtiene todos los productos registrados en la paltaforma
+  //Obtiene todos los reportes registrados en la paltaforma
 router.get('/',checkAuth,async(req,res)=>{ 
-    try {
-        const allProducts = await Product.find()
-        res.json(allProducts);
-    } catch (error) {
-        return res.status(500).send(error);
-    }
+  try {
+      const allReports = await Report.find()
+      res.json(allReports);
+  } catch (error) {
+      return res.status(500).send(error);
+  }
 });  
 
 
-//Obtener respuestas de un usuario en específico
+
+  //Obtener respuestas de un usuario en específico
 router.post('/',upload_image,async(req,res)=>{
-    const user_id = req.body.user_id;
-    const productName = req.body.productName;
-    const productPrice = parseFloat(req.body.productPrice);
-    const productCity = req.body.productCity;
-    const productCategory = req.body.productCategory;
-    const productDescription = req.body.productDescription;
+
     const urlServer = req.body.urlServer;
     const extension = path.extname(req.file.originalname);
 
     try {
-        const userDB = await Product.create({
-            user_id,
-            productName,
-            productPrice,
-            productCity,
-            productCategory,
-            productDescription,
-            imageurl:`${urlServer}/uploads/products-images/${user_id}${productName}product${extension}`
+        const userDB = await Report.create({
+            foreignIdUser:req.body.user_id,
+            emailUser:req.body.email,
+            title:req.body.title,
+            lastPrice:req.body.lastPrice,
+            currentPrice:req.body.currentPrice,
+            category:req.body.category,
+            description:req.body.description,
+            imageurl:`${urlServer}/uploads/reports_images/${req.body.user_id}${req.body.title}report${extension}`
         });
         res.json(userDB);
       } catch (error) {
@@ -69,5 +67,6 @@ router.post('/',upload_image,async(req,res)=>{
       }
 
 });
+
 
 module.exports = router;
